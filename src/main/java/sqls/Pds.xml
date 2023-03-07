@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 3-->
+<mapper namespace="Pds">
+<!-- 7.sql쿼리 생성 -->
+<select id="pdslist" resultType="mul.cam.a.dto.PdsDto"> <!-- 리턴값만 존재 -->
+	select seq, id, title, content, filename, newfilename,
+		readcount, downcount, regdate
+	from pds
+</select>	
+
+<!-- 20 -->
+<insert id="uploadPds" parameterType="mul.cam.a.dto.PdsDto">
+	insert into pds(id, title, content, filename, newfilename,readcount, downcount, regdate)
+	values(#{id},#{title},#{content},#{filename},#{newfilename},0,0,now())
+</insert>
+</mapper>
